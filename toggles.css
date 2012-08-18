@@ -1,10 +1,15 @@
 .slide {
   overflow: hidden;
+  cursor: pointer;
 }
 .slide .on,.slide .off,.slide .blob {
   float: left;
 }
 .slide .blob {
-  z-index: 99;
   position: relative;
+  z-index: 99;
+  cursor: hand;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 }
