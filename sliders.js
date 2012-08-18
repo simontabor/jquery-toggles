@@ -93,7 +93,6 @@
     }
     if (o.dragable) {
       blob.on('mouseup mouseleave',function(e) {
-        console.log(e.type);
         self.off('mousemove');
         if (slide.hasClass('active')) {
           if (diff < (-w+h)/2) {
