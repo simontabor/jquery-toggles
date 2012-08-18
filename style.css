@@ -1,0 +1,25 @@
+html {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, #242529), color-stop(100%, #34363B));
+  background: -webkit-linear-gradient(bottom, #242529 0%, #34363B 100%);
+  background: -moz-linear-gradient(bottom, #242529 0%, #34363B 100%);
+  background: -ms-linear-gradient(bottom, #242529 0%, #34363B 100%);
+  background: -o-linear-gradient(bottom, #242529 0%, #34363B 100%);
+  background: linear-gradient(bottom, #242529 0%, #34363B 100%);
+}
+h1 {
+  color: white;
+}
+div.small {
+  height: 20px;
+  width: 50px;
+  margin: 10px;
+}
+div.big {
+  width: 300px;
+  height: 50px;
+  margin: 10px;
+}
+div.no {
+  margin: 10px;
+}
