@@ -1,6 +1,6 @@
 (function( $ ){
 
-  $.fn.slide = function(opts) {
+  $.fn.toggles = function(opts) {
     opts = opts || {};
     var o = {
       dragable: true,
@@ -92,7 +92,8 @@
       });
     }
     if (o.dragable) {
-      blob.on('mouseup',function() {
+      blob.on('mouseup mouseleave',function(e) {
+        console.log(e.type);
         self.off('mousemove');
         if (slide.hasClass('active')) {
           if (diff < (-w+h)/2) {
@@ -111,7 +112,7 @@
             },o.animtime/2);
           }
         }
-        if (((+new Date()-100 < time) || diff===0) && o.clickable) self.trigger('toggle');
+        if (((+new Date()-100 < time) || diff===0) && o.clickable && e.type != 'mouseleave') self.trigger('toggle');
       });
       blob.on('mousedown',function(e) {
           time = +new Date();
