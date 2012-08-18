@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Test Page</title>
+  <link rel="stylesheet" type="text/css" href="sliders.css" />
+</head>
+<body>
+  <h1>Slider Test Page</h1>
+  <div class="small">
+  </div>
+  <div class="big">
+  </div>
+  <div class="no">
+  </div>
+  <input type="checkbox">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="sliders.js"></script>
+  <script>
+  $('div.small').slide({dragable:false,checkbox: $('input:checkbox')});
+  $('div.big').slide();
+  $('div.no').slide({clickable:false});
+  </script>
+</body>
+</html>
