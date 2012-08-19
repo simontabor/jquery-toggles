@@ -35,7 +35,6 @@
         marginLeft: (active) ? 0 : -w+h
       });
       if (o.checkbox) $(o.checkbox).attr('checked',active);
-      console.log(inner.css('marginLeft'));
       setTimeout(function() {
         inner.css({
           marginLeft: (active) ? 0 : -w+h
