@@ -12,10 +12,12 @@
       click: this
     };
     for (var i in opts) {
+      if (!opts.hasOwnProperty(i)) continue;
       // overwrite defaults
       o[i] = opts[i];
     }
     function toggle(slide,w,h) {
+      console.log('called');
       var inner = slide.find('.inner');
       slide.toggleClass('active');
       if (slide.hasClass('active')) {
@@ -93,6 +95,8 @@
       }
       function upleave(e) {
         self.off('mousemove');
+        slide.off('mouseleave');
+        blob.off('mouseup');
         if (slide.hasClass('active')) {
           if (diff < (-w+h)/2) {
             self.trigger('toggle');
@@ -110,15 +114,14 @@
             },o.animtime/2);
           }
         }
-        if (((+new Date()-100 < time) || diff===0) && o.clickable && e.type != 'mouseleave') self.trigger('toggle');
+        if (diff===0 && o.clickable && e.type != 'mouseleave') self.trigger('toggle');
       }
       if (o.dragable) {
         blob.on('mousedown',function(e) {
+          diff = 0;
           blob.off('mouseup');
           slide.off('mouseleave');
-          time = +new Date();
           var cursor = e.pageX;
-
           self.on('mousemove',blob,function(e) {
             diff = e.pageX - cursor;
             if (slide.hasClass('active')) {
