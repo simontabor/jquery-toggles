@@ -16,10 +16,11 @@
       // overwrite defaults
       o[i] = opts[i];
     }
+    var transition = 'margin-left '+o.animtime/1000+'s ease-in-out';
     var transitions = {
-      '-webkit-transition': 'margin-left '+o.animtime/1000+'s ease-in-out',
-      '-moz-transition': 'margin-left '+o.animtime/1000+'s ease-in-out',
-      'transition': 'margin-left '+o.animtime/1000+'s ease-in-out'
+      '-webkit-transition': transition,
+      '-moz-transition': transition,
+      'transition': transition
     };
     var notrans = {
       '-webkit-transition': '',
