@@ -16,23 +16,36 @@
       // overwrite defaults
       o[i] = opts[i];
     }
+    var transitions = {
+      '-webkit-transition': 'margin-left '+o.animtime/1000+'s ease-in-out',
+      '-moz-transition': 'margin-left '+o.animtime/1000+'s ease-in-out',
+      'transition': 'margin-left '+o.animtime/1000+'s ease-in-out'
+    };
+    var notrans = {
+      '-webkit-transition': '',
+      '-moz-transition': '',
+      'transition': ''
+    };
     function toggle(slide,w,h) {
-      console.log('called');
       var inner = slide.find('.inner');
       slide.toggleClass('active');
+      inner.css(transitions);
       if (slide.hasClass('active')) {
         // we need to make it active
-        inner.animate({
+        inner.css({
           marginLeft: 0
-        },o.animtime);
+        });
         if (o.checkbox) $(o.checkbox).attr('checked',true);
       }else{
         // make it inactive
-        inner.animate({
+        inner.css({
           marginLeft: -w+h
-        },o.animtime);
+        });
         if (o.checkbox) $(o.checkbox).attr('checked',false);
       }
+      setTimeout(function() {
+        inner.css(notrans);
+      },o.animtime*1.1);
     }
 
     this.each(function() {
