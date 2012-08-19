@@ -91,9 +91,31 @@
           }      
         });
       }
+      function upleave(e) {
+        self.off('mousemove');
+        if (slide.hasClass('active')) {
+          if (diff < (-w+h)/2) {
+            self.trigger('toggle');
+          }else{
+            inner.animate({
+              marginLeft: 0
+            }, o.animtime/2);
+          }
+        }else{
+          if (diff > (w-h)/2) {
+            self.trigger('toggle');
+          }else{
+            inner.animate({
+              marginLeft: -w+h
+            },o.animtime/2);
+          }
+        }
+        if (((+new Date()-100 < time) || diff===0) && o.clickable && e.type != 'mouseleave') self.trigger('toggle');
+      }
       if (o.dragable) {
         blob.on('mousedown',function(e) {
-          blob.off('mouseup mouseleave');
+          blob.off('mouseup');
+          slide.off('mouseleave');
           time = +new Date();
           var cursor = e.pageX;
 
@@ -105,33 +127,14 @@
               });
             }else{
               inner.css({
-                marginLeft: (diff > 0) ? diff-w+h :-w+h
+                marginLeft: (diff > 0) ? (diff > w-h) ? 0 : diff-w+h :-w+h
               });
             }
           });
-          blob.on('mouseup mouseleave',function(e) {
-            self.off('mousemove');
-            if (slide.hasClass('active')) {
-              if (diff < (-w+h)/2) {
-                self.trigger('toggle');
-              }else{
-                inner.animate({
-                  marginLeft: 0
-                }, o.animtime/2);
-              }
-            }else{
-              if (diff > (w-h)/2) {
-                self.trigger('toggle');
-              }else{
-                inner.animate({
-                  marginLeft: -w+h
-                },o.animtime/2);
-              }
-            }
-            if (((+new Date()-100 < time) || diff===0) && o.clickable && e.type != 'mouseleave') self.trigger('toggle');
-          });
+          blob.on('mouseup',upleave);
+          slide.on('mouseleave',upleave);
         });
       }
     });
-  };
+};
 })( jQuery );
