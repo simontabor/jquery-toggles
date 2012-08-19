@@ -102,9 +102,9 @@
         });
       }
       function upleave(e) {
-        self.off('mousemove touchmove');
-        slide.off('mouseleave touchleave');
-        blob.off('mouseup touchend');
+        self.off('mousemove');
+        slide.off('mouseleave');
+        blob.off('mouseup');
         if (diff !== 0) {
         if (slide.hasClass('active')) {
           if (diff < (-w+h)/2) {
@@ -123,15 +123,15 @@
             },o.animtime/2);
           }
         }
-      }else if (o.clickable && e.type != 'mouseleave' && e.type != 'touchleave') self.trigger('toggle');
+      }else if (o.clickable && e.type != 'mouseleave') self.trigger('toggle');
       }
       if (o.dragable) {
-        blob.on('mousedown touchstart',function(e) {
+        blob.on('mousedown',function(e) {
           diff = 0;
-          blob.off('mouseup touchend');
-          slide.off('mouseleave touchleave');
+          blob.off('mouseup');
+          slide.off('mouseleave');
           var cursor = e.pageX;
-          self.on('mousemove touchmove',blob,function(e) {
+          self.on('mousemove',blob,function(e) {
             diff = e.pageX - cursor;
             if (slide.hasClass('active')) {
               inner.css({
@@ -143,8 +143,8 @@
               });
             }
           });
-          blob.on('mouseup touchend',upleave);
-          slide.on('mouseleave touchleave',upleave);
+          blob.on('mouseup',upleave);
+          slide.on('mouseleave',upleave);
         });
       }
     });
