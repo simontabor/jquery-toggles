@@ -29,24 +29,19 @@
     };
     function toggle(slide,w,h) {
       var inner = slide.find('.inner');
-      slide.toggleClass('active');
       inner.css(transitions);
-      if (slide.hasClass('active')) {
-        // we need to make it active
-        inner.css({
-          marginLeft: 0
-        });
-        if (o.checkbox) $(o.checkbox).attr('checked',true);
-      }else{
-        // make it inactive
-        inner.css({
-          marginLeft: -w+h
-        });
-        if (o.checkbox) $(o.checkbox).attr('checked',false);
-      }
+      var active = slide.toggleClass('active').hasClass('active');
+      inner.css({
+        marginLeft: (active) ? 0 : -w+h
+      });
+      if (o.checkbox) $(o.checkbox).attr('checked',active);
+      console.log(inner.css('marginLeft'));
       setTimeout(function() {
+        inner.css({
+          marginLeft: (active) ? 0 : -w+h
+        });
         inner.css(notrans);
-      },o.animtime*1.1);
+      },o.animtime);
     }
 
     this.each(function() {
@@ -111,6 +106,7 @@
         self.off('mousemove');
         slide.off('mouseleave');
         blob.off('mouseup');
+        if (diff !== 0) {
         if (slide.hasClass('active')) {
           if (diff < (-w+h)/2) {
             self.trigger('toggle');
@@ -128,7 +124,7 @@
             },o.animtime/2);
           }
         }
-        if (diff===0 && o.clickable && e.type != 'mouseleave') self.trigger('toggle');
+      }else if (o.clickable && e.type != 'mouseleave') self.trigger('toggle');
       }
       if (o.dragable) {
         blob.on('mousedown',function(e) {
