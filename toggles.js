@@ -8,8 +8,7 @@
       ontext: 'ON',
       offtext: 'OFF',
       on: true,
-      animtime: 300,
-      click: this
+      animtime: 300
     };
     for (var i in opts) {
       if (!opts.hasOwnProperty(i)) continue;
