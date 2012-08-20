@@ -106,7 +106,7 @@
         blob.off('mouseup');
         if (diff !== 0) {
         if (slide.hasClass('active')) {
-          if (diff < (-w+h)/2) {
+          if (diff < (-w+h)/4*3) {
             self.trigger('toggle');
           }else{
             inner.animate({
@@ -114,7 +114,7 @@
             }, o.animtime/2);
           }
         }else{
-          if (diff > (w-h)/2) {
+          if (diff > (w-h)/4) {
             self.trigger('toggle');
           }else{
             inner.animate({
