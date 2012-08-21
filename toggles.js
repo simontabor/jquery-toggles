@@ -21,7 +21,7 @@
       '-moz-transition': '',
       'transition': ''
     };
-    function toggle(slide,w,h) {
+    var toggle = function(slide,w,h) {
       var inner = slide.find('.inner');
       inner.css(transitions);
       var active = slide.toggleClass('active').hasClass('active');
@@ -35,7 +35,7 @@
         });
         inner.css(notrans);
       },o.animtime);
-    }
+    };
 
     return this.each(function() {
       var self = $(this);
