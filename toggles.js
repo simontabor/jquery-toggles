@@ -2,19 +2,14 @@
 
   $.fn.toggles = function(opts) {
     opts = opts || {};
-    var o = {
+    var o = $.extend({
       dragable: true,
       clickable: true,
       ontext: 'ON',
       offtext: 'OFF',
       on: true,
       animtime: 300
-    };
-    for (var i in opts) {
-      if (!opts.hasOwnProperty(i)) continue;
-      // overwrite defaults
-      o[i] = opts[i];
-    }
+    },opts);
     var transition = 'margin-left '+o.animtime/1000+'s ease-in-out';
     var transitions = {
       '-webkit-transition': transition,
@@ -42,7 +37,7 @@
       },o.animtime);
     }
 
-    this.each(function() {
+    return this.each(function() {
       var self = $(this);
 
       // we dont want the click handler to go on all the elements
