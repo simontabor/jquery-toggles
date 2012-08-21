@@ -97,7 +97,7 @@
         o.click.click(function(e) {
           if (e.target !=  blob[0] || !o.dragable) {
             self.trigger('toggle');
-          }      
+          }
         });
       }
       function upleave(e) {
