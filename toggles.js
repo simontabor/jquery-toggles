@@ -91,7 +91,7 @@
       if (o.clickable) {
         o.click.click(function(e) {
           if (e.target !=  blob[0] || !o.dragable) {
-            self.trigger('toggle');
+            self.trigger('toggle', !slide.hasClass('active'));
           }
         });
       }
@@ -102,7 +102,7 @@
         if (diff !== 0) {
         if (slide.hasClass('active')) {
           if (diff < (-w+h)/4) {
-            self.trigger('toggle');
+            self.trigger('toggle', !slide.hasClass('active'));
           }else{
             inner.animate({
               marginLeft: 0
@@ -110,14 +110,14 @@
           }
         }else{
           if (diff > (w-h)/4) {
-            self.trigger('toggle');
+            self.trigger('toggle', !slide.hasClass('active'));
           }else{
             inner.animate({
               marginLeft: -w+h
             },o.animtime/2);
           }
         }
-      }else if (o.clickable && e.type != 'mouseleave') self.trigger('toggle');
+      }else if (o.clickable && e.type != 'mouseleave') self.trigger('toggle', !slide.hasClass('active'));
       }
       if (o.dragable) {
         blob.on('mousedown',function(e) {

@@ -1,5 +1,34 @@
 # jQuery Toggles
 
+
+```javascript
+
+// Simplest way:
+$('#myDiv').toggles();
+
+
+// With options (defaults shown below)
+$('#myDiv').toggles({
+    dragable: true,
+    clickable: true,
+    ontext: 'ON',
+    offtext: 'OFF',
+    on: true,
+    animtime: 300
+});
+
+
+// Getting notified of changes, and the new state:
+$('#myDiv').on('toggle', function (active) {
+    if (active) {
+        foo();
+    } else {
+        bar();
+    }
+});
+
+```
+
 http://simontabor.com/toggles/
 
 ## License (MIT)
