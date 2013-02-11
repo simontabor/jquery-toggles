@@ -88,7 +88,7 @@ $.fn['toggles'] = function(options) {
         width: onoffwidth,
         textAlign: 'center',
         textIndent: -halfheight,
-        lineHeight: height
+        lineHeight: height+'px'
       })
       .text(opts['text']['on']);
 
@@ -99,7 +99,7 @@ $.fn['toggles'] = function(options) {
         marginLeft: -halfheight,
         textAlign: 'center',
         textIndent: halfheight,
-        lineHeight: height
+        lineHeight: height+'px'
       })
       .text(opts['text']['off']);
 
