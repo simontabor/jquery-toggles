@@ -3,19 +3,19 @@ $.fn['toggles'] = function(options) {
 
   // extend default opts with the users options
   var opts = $.extend({
-    drag: true, // can the toggle be dragged
-    click: true, // can it be clicked to toggle
-    text: {
-      on: 'ON', // text for the ON position
-      off: 'OFF' // and off
+    'drag': true, // can the toggle be dragged
+    'click': true, // can it be clicked to toggle
+    'text': {
+      'on': 'ON', // text for the ON position
+      'off': 'OFF' // and off
     },
-    on: true, // is the toggle ON on init
-    animate: 250, // animation time
-    transition: 'ease-in-out', // animation transition,
-    checkbox: null, // the checkbox to toggle (for use in forms)
-    clicker: null, // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
-    width: 50, // width used if not set in css
-    height: 20 // height if not set in css
+    'on': true, // is the toggle ON on init
+    'animate': 250, // animation time
+    'transition': 'ease-in-out', // animation transition,
+    'checkbox': null, // the checkbox to toggle (for use in forms)
+    'clicker': null, // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
+    'width': 50, // width used if not set in css
+    'height': 20 // height if not set in css
   },options);
 
   // ensure these are jquery elements
@@ -170,7 +170,7 @@ $.fn['toggles'] = function(options) {
 
         // if the movement enough to toggle?
         if (diff < -slideLimit) {
-          self.trigger('toggle',!active);
+          toggle.trigger('toggle',!active);
         } else {
 
           // go back
@@ -182,7 +182,7 @@ $.fn['toggles'] = function(options) {
 
         // inactive
         if (diff > slideLimit) {
-          self.trigger('toggle',!active);
+          toggle.trigger('toggle',!active);
         } else {
 
           // go back again
