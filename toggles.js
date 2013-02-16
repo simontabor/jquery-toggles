@@ -72,11 +72,12 @@ $.fn['toggles'] = function(options) {
       toggle.width(width = opts.width);
     }
 
-    var slide = $('<div class="slide">'); // wrapper inside toggle
-    var inner = $('<div class="inner">'); // inside slide, this bit moves
-    var on = $('<div class="on">'); // the on div
-    var off = $('<div class="off">'); // off div
-    var blob = $('<div class="blob">'); // the grip toggle blob
+    var div = '<div class="toggle-';
+    var slide = $(div+'slide">'); // wrapper inside toggle
+    var inner = $(div+'inner">'); // inside slide, this bit moves
+    var on = $(div+'on">'); // the on div
+    var off = $(div+'off">'); // off div
+    var blob = $(div+'blob">'); // the grip toggle blob
 
     var halfheight = height/2;
     var onoffwidth = width - halfheight;
