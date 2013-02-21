@@ -15,8 +15,11 @@ $.fn['toggles'] = function(options) {
     'checkbox': null, // the checkbox to toggle (for use in forms)
     'clicker': null, // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
     'width': 50, // width used if not set in css
-    'height': 20 // height if not set in css
+    'height': 20, // height if not set in css
+    'type': 'compact' // defaults to a compact toggle, other option is 'select' where both options are shown at once
   },options);
+
+  var slideType = (opts['type'] == 'select');
 
   // ensure these are jquery elements
   opts['checkbox'] = $(opts['checkbox']); // doesnt matter for checkbox
@@ -42,6 +45,9 @@ $.fn['toggles'] = function(options) {
   var doToggle = function(slide, width, height) {
     var active = slide.toggleClass('active').hasClass('active');
     var inner = slide.find('.inner').css(transitions);
+
+    slide.find('.toggle-off').toggleClass('active');
+    slide.find('.toggle-on').toggleClass('active');
 
     var margin = active ? 0 : -width + height;
 
@@ -79,6 +85,8 @@ $.fn['toggles'] = function(options) {
     var off = $(div+'off">'); // off div
     var blob = $(div+'blob">'); // the grip toggle blob
 
+    if (opts['on']) on.addClass('active');
+
     var halfheight = height/2;
     var onoffwidth = width - halfheight;
 
@@ -88,7 +96,7 @@ $.fn['toggles'] = function(options) {
         height: height,
         width: onoffwidth,
         textAlign: 'center',
-        textIndent: -halfheight,
+        textIndent: slideType ? '' : -halfheight,
         lineHeight: height+'px'
       })
       .text(opts['text']['on']);
@@ -97,9 +105,9 @@ $.fn['toggles'] = function(options) {
       .css({
         height: height,
         width: onoffwidth,
-        marginLeft: -halfheight,
+        marginLeft: slideType ? '' : -halfheight,
         textAlign: 'center',
-        textIndent: halfheight,
+        textIndent: slideType ? '' : halfheight,
         lineHeight: height+'px'
       })
       .text(opts['text']['off']);
@@ -111,6 +119,12 @@ $.fn['toggles'] = function(options) {
     });
 
     inner.css('width',width * 2 - height);
+
+    if (slideType) {
+      toggle.css('width', onoffwidth*2);
+      blob.hide();
+    }
+
 
     if (opts['on']) {
       slide.addClass('active');
@@ -146,7 +160,7 @@ $.fn['toggles'] = function(options) {
     }
 
     // we're done with all the non dragging stuff
-    if (!opts['drag']) return;
+    if (!opts['drag'] || slideType) return;
 
     // time to begin the dragging parts/blob clicks
     var diff;
