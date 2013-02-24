@@ -39,6 +39,10 @@ $('.toggle').on('toggle', function (active) {
 
 ```
 
+## TODO
+- Improve themes
+- Document new toggle type (select)
+
 Examples can be seen [here](http://simontabor.com/toggles/)
 
 

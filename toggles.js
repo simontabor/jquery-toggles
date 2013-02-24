@@ -19,7 +19,7 @@ $.fn['toggles'] = function(options) {
     'type': 'compact' // defaults to a compact toggle, other option is 'select' where both options are shown at once
   },options);
 
-  var slideType = (opts['type'] == 'select');
+  var selectType = (opts['type'] == 'select');
 
   // ensure these are jquery elements
   opts['checkbox'] = $(opts['checkbox']); // doesnt matter for checkbox
@@ -96,7 +96,7 @@ $.fn['toggles'] = function(options) {
         height: height,
         width: onoffwidth,
         textAlign: 'center',
-        textIndent: slideType ? '' : -halfheight,
+        textIndent: selectType ? '' : -halfheight,
         lineHeight: height+'px'
       })
       .text(opts['text']['on']);
@@ -105,9 +105,9 @@ $.fn['toggles'] = function(options) {
       .css({
         height: height,
         width: onoffwidth,
-        marginLeft: slideType ? '' : -halfheight,
+        marginLeft: selectType ? '' : -halfheight,
         textAlign: 'center',
-        textIndent: slideType ? '' : halfheight,
+        textIndent: selectType ? '' : halfheight,
         lineHeight: height+'px'
       })
       .text(opts['text']['off']);
@@ -120,7 +120,7 @@ $.fn['toggles'] = function(options) {
 
     inner.css('width',width * 2 - height);
 
-    if (slideType) {
+    if (selectType) {
       toggle.css('width', onoffwidth*2);
       blob.hide();
     }
@@ -161,7 +161,7 @@ $.fn['toggles'] = function(options) {
     }
 
     // we're done with all the non dragging stuff
-    if (!opts['drag'] || slideType) return;
+    if (!opts['drag'] || selectType) return;
 
     // time to begin the dragging parts/blob clicks
     var diff;
