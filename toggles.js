@@ -44,7 +44,7 @@ $.fn['toggles'] = function(options) {
   // this is the actual toggle function which does the toggling
   var doToggle = function(slide, width, height) {
     var active = slide.toggleClass('active').hasClass('active');
-    var inner = slide.find('.inner').css(transitions);
+    var inner = slide.find('.toggle-inner').css(transitions);
 
     slide.find('.toggle-off').toggleClass('active');
     slide.find('.toggle-on').toggleClass('active');
