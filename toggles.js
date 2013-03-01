@@ -135,7 +135,11 @@ $.fn['toggles'] = function(options) {
     toggle.html(slide.html(inner.append(on,blob,off)));
 
     // when toggle is fired, toggle the toggle
-    slide.on('toggle', function(active) {
+    slide.on('toggle', function(e,active) {
+
+      // stop bubbling
+      if (e) e.stopPropagation();
+
       toggle.trigger('toggle',active);
       doToggle(slide,width,height);
     });
