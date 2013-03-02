@@ -49,13 +49,15 @@ $.fn['toggles'] = function(options) {
     slide.find('.toggle-off').toggleClass('active');
     slide.find('.toggle-on').toggleClass('active');
 
+    // toggle the checkbox, if there is one
+    opts['checkbox'].attr('checked',active);
+
+    if (selectType) return;
+
     var margin = active ? 0 : -width + height;
 
     // move the toggle!
     inner.css('margin-left',margin);
-
-    // toggle the checkbox, if there is one
-    opts['checkbox'].attr('checked',active);
 
     // ensure the toggle is left in the correct state after animation
     setTimeout(function() {
