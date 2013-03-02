@@ -1,11 +1,11 @@
-.slide {
+.toggle-slide {
   overflow: hidden;
   cursor: pointer;
 }
-.slide .on,.slide .off,.slide .blob {
+.toggle-slide .toggle-on,.toggle-slide .toggle-off,.toggle-slide .toggle-blob {
     float: left;
 }
-.slide .blob {
+.toggle-slide .toggle-blob {
     position: relative;
     z-index: 99;
     cursor: hand;
@@ -14,29 +14,29 @@
     cursor: -webkit-grab;
 }
 
-.iphone .slide {
+.toggle-iphone .toggle-slide {
   border-radius: 9999px;
   box-shadow: 0 0 0 1px #999;
 }
-.iphone .slide .on,.iphone .slide .off,.iphone .slide .blob {
+.toggle-iphone .toggle-slide .toggle-on,.toggle-iphone .toggle-slide .toggle-off,.toggle-iphone .toggle-slide .toggle-blob {
   color: white;
   font-size: 18px;
   font-weight: bold;
   text-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
-.iphone .slide .on {
+.toggle-iphone .toggle-slide .toggle-on {
   border-radius: 9999px 0 0 9999px;
   background: #037bda; /* Old browsers */
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4);
 }
-.iphone .slide .off {
+.toggle-iphone .toggle-slide .toggle-off {
   box-shadow: inset -2px 2px 5px rgba(0,0,0,0.4);
   border-radius: 0 9999px 9999px 0;
   color: rgb(130,130,130);
   text-shadow: 0 0 1px white;
 
 }
-.iphone .slide .on:after {
+.toggle-iphone .toggle-slide .toggle-on:after {
   background: #1189f1; /* Old browsers */
   background: -moz-linear-gradient(top,  #1189f1 0%, #3797ef 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1189f1), color-stop(100%,#3797ef)); /* Chrome,Safari4+ */
@@ -52,10 +52,10 @@
   border-radius: 9999px;
   margin-left: 10%;
 }
-.iphone .slide .off {
+.toggle-iphone .toggle-slide .toggle-off {
   background: #ECECEC;
 }
-.iphone .slide .off:after {
+.toggle-iphone .toggle-slide .toggle-off:after {
   background: #fafafa; /* Old browsers */
   background: -moz-linear-gradient(top,  #fafafa 0%, #fdfdfd 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#fdfdfd)); /* Chrome,Safari4+ */
@@ -71,7 +71,7 @@
   margin-right: 10%;
   border-radius: 9999px;
 }
-.iphone .slide .blob {
+.toggle-iphone .toggle-slide .toggle-blob {
   border-radius: 50px;
   background: #d1d1d1; /* Old browsers */
   background: -moz-linear-gradient(top,  #d1d1d1 0%, #fafafa 100%); /* FF3.6+ */
