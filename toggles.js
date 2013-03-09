@@ -80,7 +80,7 @@
       });
       if (o.on) {
         slide.addClass('active');
-        if (o.checkbox) $(o.checkbox).attr('checked',true);
+        if (o.checkbox) $(o.checkbox).prop('checked',true);
       }
       self.html('');
       self.append(slide.append(inner.append(on,blob,off)));
