@@ -50,7 +50,7 @@ $.fn['toggles'] = function(options) {
     slide.find('.toggle-on').toggleClass('active');
 
     // toggle the checkbox, if there is one
-    opts['checkbox'].attr('checked',active);
+    opts['checkbox'].prop('checked',active);
 
     if (selectType) return;
 
@@ -130,7 +130,7 @@ $.fn['toggles'] = function(options) {
 
     if (opts['on']) {
       slide.addClass('active');
-      opts['checkbox'].attr('checked',true);
+      opts['checkbox'].prop('checked',true);
     }
 
     // construct the toggle
