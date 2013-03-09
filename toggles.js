@@ -138,7 +138,7 @@ $.fn['toggles'] = function(options) {
       // stop bubbling
       if (e) e.stopPropagation();
 
-      toggle.trigger('toggle',active);
+      toggle.trigger('toggle',!active);
       doToggle(slide,width,height);
     });
 
@@ -154,7 +154,7 @@ $.fn['toggles'] = function(options) {
       // bind the click, ensuring its not the blob being clicked on
       toggle.on('click',function(e) {
         if (e.target !=  blob[0] || !opts['drag']) {
-          slide.trigger('toggle', !slide.hasClass('active'));
+          slide.trigger('toggle', slide.hasClass('active'));
         }
       });
     }
@@ -163,7 +163,7 @@ $.fn['toggles'] = function(options) {
     if (opts['clicker']) {
       opts['clicker'].on('click',function(e) {
         if (e.target !=  blob[0] || !opts['drag']) {
-          slide.trigger('toggle', !slide.hasClass('active'));
+          slide.trigger('toggle', slide.hasClass('active'));
         }
       });
     }
@@ -186,7 +186,7 @@ $.fn['toggles'] = function(options) {
       if (!diff && opts.click && e.type !== 'mouseleave') {
 
         // theres no diff so nothing has moved. only toggle if its a mouseup
-        slide.trigger('toggle', !active);
+        slide.trigger('toggle', active);
         return;
       }
 
@@ -194,7 +194,7 @@ $.fn['toggles'] = function(options) {
 
         // if the movement enough to toggle?
         if (diff < -slideLimit) {
-          slide.trigger('toggle',!active);
+          slide.trigger('toggle',active);
         } else {
 
           // go back
@@ -206,7 +206,7 @@ $.fn['toggles'] = function(options) {
 
         // inactive
         if (diff > slideLimit) {
-          slide.trigger('toggle',!active);
+          slide.trigger('toggle',active);
         } else {
 
           // go back again
