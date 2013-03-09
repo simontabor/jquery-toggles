@@ -9,7 +9,7 @@ $.fn['toggles'] = function(options) {
       'on': 'ON', // text for the ON position
       'off': 'OFF' // and off
     },
-    'on': true, // is the toggle ON on init
+    'on': false, // is the toggle ON on init
     'animate': 250, // animation time
     'transition': 'ease-in-out', // animation transition,
     'checkbox': null, // the checkbox to toggle (for use in forms)
@@ -87,8 +87,6 @@ $.fn['toggles'] = function(options) {
     var off = $(div+'off">'); // off div
     var blob = $(div+'blob">'); // the grip toggle blob
 
-    if (opts['on']) on.addClass('active');
-
     var halfheight = height/2;
     var onoffwidth = width - halfheight;
 
@@ -112,7 +110,8 @@ $.fn['toggles'] = function(options) {
         textIndent: selectType ? '' : halfheight,
         lineHeight: height+'px'
       })
-      .text(opts['text']['off']);
+      .text(opts['text']['off'])
+      .addClass('active');
 
     blob.css({
       height: height,
@@ -120,17 +119,14 @@ $.fn['toggles'] = function(options) {
       marginLeft: -halfheight
     });
 
-    inner.css('width',width * 2 - height);
+    inner.css({
+      width: width * 2 - height,
+      marginLeft: selectType ? 0 : -width + height
+    });
 
     if (selectType) {
       toggle.css('width', onoffwidth*2);
       blob.hide();
-    }
-
-
-    if (opts['on']) {
-      slide.addClass('active');
-      opts['checkbox'].prop('checked',true);
     }
 
     // construct the toggle
@@ -145,6 +141,12 @@ $.fn['toggles'] = function(options) {
       toggle.trigger('toggle',active);
       doToggle(slide,width,height);
     });
+
+    if (opts['on']) {
+
+      // toggle immediately to turn the toggle on
+      doToggle(slide,width,height);
+    }
 
     // if click is enabled and toggle isn't within the clicker element (stops double binding)
     if (opts['click'] && (!opts['clicker'] || !opts['clicker'].has(toggle).length)) {
