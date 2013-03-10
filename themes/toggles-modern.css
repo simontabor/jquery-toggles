@@ -1,6 +1,12 @@
 .toggle-slide {
   overflow: hidden;
   cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .toggle-slide .toggle-on,.toggle-slide .toggle-off,.toggle-slide .toggle-blob {
     float: left;
@@ -36,7 +42,8 @@
     font-size: 11px;
     box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
   }
-  .toggle-modern .toggle-slide .toggle-off {
+
+  .toggle-modern .toggle-slide .toggle-off,.toggle-modern .toggle-slide .toggle-off.active {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #737e8d), color-stop(1, #3f454e));
     background-image: -webkit-linear-gradient(#737e8d, #3f454e);
     background-image: -moz-linear-gradient(#737e8d, #3f454e);
@@ -45,7 +52,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#737e8d', endColorstr='#3f454e');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#737e8d', endColorstr='#3f454e')";
   }
-  .toggle-modern .toggle-slide .toggle-on {
+  .toggle-modern .toggle-slide .toggle-on,.toggle-modern .toggle-slide .toggle-on.active {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4894cd), color-stop(1, #2852a6));
     background-image: -webkit-linear-gradient(#4894cd, #2852a6);
     background-image: -moz-linear-gradient(#4894cd, #2852a6);
@@ -53,6 +60,9 @@
     background-image: -ms-linear-gradient(#4894cd, #2852a6);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4894cd', endColorstr='#2852a6');
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#4894cd', endColorstr='#2852a6')";
+  }
+  .toggle-modern .toggle-select .toggle-off, .toggle-modern .toggle-select .toggle-on {
+    background: none;
   }
   .toggle-modern .toggle-slide .toggle-blob {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c0c5c9), color-stop(1, #81898f));

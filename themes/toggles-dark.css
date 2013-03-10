@@ -1,6 +1,12 @@
 .toggle-slide {
   overflow: hidden;
   cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .toggle-slide .toggle-on,.toggle-slide .toggle-off,.toggle-slide .toggle-blob {
     float: left;
@@ -22,7 +28,7 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
 }
-.toggle-dark .toggle-slide .toggle-on {
+.toggle-dark .toggle-slide .toggle-on, .toggle-dark .toggle-select .toggle-inner .active {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1A70BE), color-stop(100%, #31A2E1));
   background: -webkit-linear-gradient(top, #1A70BE 0%, #31A2E1 100%);
   background: -moz-linear-gradient(top, #1A70BE 0%, #31A2E1 100%);
@@ -30,7 +36,7 @@
   background: -o-linear-gradient(top, #1A70BE 0%, #31A2E1 100%);
   background: linear-gradient(top, #1A70BE 0%, #31A2E1 100%);
 }
-.toggle-dark .toggle-slide .toggle-off {
+.toggle-dark .toggle-slide .toggle-off, .toggle-dark .toggle-select .toggle-on {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #242529), color-stop(100%, #34363B));
   background: -webkit-linear-gradient(top, #242529 0%, #34363B 100%);
   background: -moz-linear-gradient(top, #242529 0%, #34363B 100%);
