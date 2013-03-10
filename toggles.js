@@ -125,6 +125,7 @@ $.fn['toggles'] = function(options) {
     });
 
     if (selectType) {
+      slide.addClass('toggle-select');
       toggle.css('width', onoffwidth*2);
       blob.hide();
     }
