@@ -99,7 +99,7 @@ $.fn['toggles'] = function(options) {
         textIndent: selectType ? '' : -halfheight,
         lineHeight: height+'px'
       })
-      .text(opts['text']['on']);
+      .html(opts['text']['on']);
 
     off
       .css({
@@ -110,7 +110,7 @@ $.fn['toggles'] = function(options) {
         textIndent: selectType ? '' : halfheight,
         lineHeight: height+'px'
       })
-      .text(opts['text']['off'])
+      .html(opts['text']['off'])
       .addClass('active');
 
     blob.css({
