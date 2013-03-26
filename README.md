@@ -30,7 +30,7 @@ $('.toggle').toggles({
 
 
 // Getting notified of changes, and the new state:
-$('.toggle').on('toggle', function (active) {
+$('.toggle').on('toggle', function (e, active) {
     if (active) {
         foo();
     } else {
