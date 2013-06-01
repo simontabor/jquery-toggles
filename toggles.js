@@ -1,3 +1,8 @@
+/**
+@license jQuery Toggles v2.0.2
+Copyright 2013 Simon Tabor - MIT License
+https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
+*/
 $.fn['toggles'] = function(options) {
   options = options || {};
 
