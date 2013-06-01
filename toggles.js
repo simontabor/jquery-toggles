@@ -1,5 +1,5 @@
 /**
-@license jQuery Toggles v2.0.2
+@license jQuery Toggles v2.0.3
 Copyright 2013 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
@@ -144,8 +144,8 @@ $.fn['toggles'] = function(options) {
       // stop bubbling
       if (e) e.stopPropagation();
 
-      toggle.trigger('toggle',!active);
       doToggle(slide,width,height);
+      toggle.trigger('toggle',!active);
     });
 
     if (opts['on']) {
