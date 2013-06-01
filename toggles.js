@@ -1,5 +1,5 @@
 /**
-@license jQuery Toggles v2.0.3
+@license jQuery Toggles v2.0.4
 Copyright 2013 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
@@ -47,8 +47,11 @@ $.fn['toggles'] = function(options) {
   };
 
   // this is the actual toggle function which does the toggling
-  var doToggle = function(slide, width, height) {
+  var doToggle = function(slide, width, height, state) {
     var active = slide.toggleClass('active').hasClass('active');
+
+    if (state === active) return;
+
     var inner = slide.find('.toggle-inner').css(transitions);
 
     slide.find('.toggle-off').toggleClass('active');
@@ -146,6 +149,14 @@ $.fn['toggles'] = function(options) {
 
       doToggle(slide,width,height);
       toggle.trigger('toggle',!active);
+    });
+
+    // setup events for toggling on or off
+    toggle.on('toggleOn', function() {
+      doToggle(slide, width, height, false);
+    });
+    toggle.on('toggleOff', function() {
+      doToggle(slide, width, height, true);
     });
 
     if (opts['on']) {
