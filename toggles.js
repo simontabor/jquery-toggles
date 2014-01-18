@@ -196,7 +196,7 @@ $.fn['toggles'] = function(options) {
     var upLeave = function(e) {
       toggle.off('mousemove');
       slide.off('mouseleave');
-      blob.off('mouseup');
+      blob.off('mouseup touchend');
 
       var active = slide.hasClass('active');
 
@@ -237,16 +237,16 @@ $.fn['toggles'] = function(options) {
 
     var wh = -width + height;
 
-    blob.on('mousedown', function(e) {
+    blob.on('mousedown touchstart', function(e) {
 
       // reset diff
       diff = 0;
 
-      blob.off('mouseup');
+      blob.off('mouseup touchend');
       slide.off('mouseleave');
       var cursor = e.pageX;
 
-      toggle.on('mousemove', blob, function(e) {
+      toggle.on('mousemove touchmove', blob, function(e) {
         diff = e.pageX - cursor;
         var marginLeft;
         if (slide.hasClass('active')) {
@@ -268,7 +268,7 @@ $.fn['toggles'] = function(options) {
         inner.css('margin-left',marginLeft);
       });
 
-      blob.on('mouseup', upLeave);
+      blob.on('mouseup touchend', upLeave);
       slide.on('mouseleave', upLeave);
     });
 
