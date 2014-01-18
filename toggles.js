@@ -169,7 +169,9 @@ $.fn['toggles'] = function(options) {
     if (opts['click'] && (!opts['clicker'] || !opts['clicker'].has(toggle).length)) {
 
       // bind the click, ensuring its not the blob being clicked on
-      toggle.on('click',function(e) {
+      toggle.on('click touchstart',function(e) {
+        e.stopPropagation();
+
         if (e.target !=  blob[0] || !opts['drag']) {
           slide.trigger('toggle', slide.hasClass('active'));
         }
@@ -178,7 +180,9 @@ $.fn['toggles'] = function(options) {
 
     // setup the clicker element
     if (opts['clicker']) {
-      opts['clicker'].on('click',function(e) {
+      opts['clicker'].on('click touchstart',function(e) {
+        e.stopPropagation();
+
         if (e.target !=  blob[0] || !opts['drag']) {
           slide.trigger('toggle', slide.hasClass('active'));
         }
@@ -194,7 +198,7 @@ $.fn['toggles'] = function(options) {
 
     // fired on mouseup and mouseleave events
     var upLeave = function(e) {
-      toggle.off('mousemove');
+      toggle.off('mousemove touchmove');
       slide.off('mouseleave');
       blob.off('mouseup touchend');
 
