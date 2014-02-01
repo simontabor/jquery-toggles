@@ -1,5 +1,5 @@
 /**
-@license jQuery Toggles v2.0.4
+@license jQuery Toggles v2.0.5
 Copyright 2013 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
