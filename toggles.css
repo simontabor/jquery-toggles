@@ -20,3 +20,6 @@
   cursor: -moz-grab;
   cursor: -webkit-grab;
 }
+.row{
+  margin-bottom: 10px;
+}
