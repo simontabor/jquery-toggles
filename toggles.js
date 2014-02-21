@@ -78,14 +78,23 @@ $.fn['toggles'] = function(options) {
   // start setting up the toggle(s)
   return this.each(function() {
     var toggle = $(this);
+    var itemOpts = $.extend({}, opts);
+    var overridable = ['on','width', 'height'];
 
+    $.each(overridable, function(index, val) {
+      var opt = toggle.data('toggle-'+val);
+       if (opt !== undefined) {
+        itemOpts[val] = opt;
+       }
+    });
+    
     var height = toggle.height();
     var width = toggle.width();
 
     // if the element doesnt have an explicit height/width in css, set them
     if (!height || !width) {
-      toggle.height(height = opts.height);
-      toggle.width(width = opts.width);
+      toggle.height(height = itemOpts.height);
+      toggle.width(width = itemOpts.width);
     }
 
     var div = '<div class="toggle-';
@@ -107,7 +116,7 @@ $.fn['toggles'] = function(options) {
         textIndent: selectType ? '' : -halfheight,
         lineHeight: height+'px'
       })
-      .html(opts['text']['on']);
+      .html(itemOpts['text']['on']);
 
     off
       .css({
@@ -118,7 +127,7 @@ $.fn['toggles'] = function(options) {
         textIndent: selectType ? '' : halfheight,
         lineHeight: height+'px'
       })
-      .html(opts['text']['off'])
+      .html(itemOpts['text']['off'])
       .addClass('active');
 
     blob.css({
@@ -158,39 +167,39 @@ $.fn['toggles'] = function(options) {
     toggle.on('toggleOff', function() {
       doToggle(slide, width, height, true);
     });
-
-    if (opts['on']) {
+    
+    if (itemOpts['on']) {
 
       // toggle immediately to turn the toggle on
       doToggle(slide,width,height);
     }
 
     // if click is enabled and toggle isn't within the clicker element (stops double binding)
-    if (opts['click'] && (!opts['clicker'] || !opts['clicker'].has(toggle).length)) {
+    if (itemOpts['click'] && (!itemOpts['clicker'] || !itemOpts['clicker'].has(toggle).length)) {
 
       // bind the click, ensuring its not the blob being clicked on
       toggle.on('click touchstart',function(e) {
         e.stopPropagation();
 
-        if (e.target !=  blob[0] || !opts['drag']) {
+        if (e.target !=  blob[0] || !itemOpts['drag']) {
           slide.trigger('toggle', slide.hasClass('active'));
         }
       });
     }
 
     // setup the clicker element
-    if (opts['clicker']) {
-      opts['clicker'].on('click touchstart',function(e) {
+    if (itemOpts['clicker']) {
+      itemOpts['clicker'].on('click touchstart',function(e) {
         e.stopPropagation();
 
-        if (e.target !=  blob[0] || !opts['drag']) {
+        if (e.target !=  blob[0] || !itemOpts['drag']) {
           slide.trigger('toggle', slide.hasClass('active'));
         }
       });
     }
 
     // we're done with all the non dragging stuff
-    if (!opts['drag'] || selectType) return;
+    if (!itemOpts['drag'] || selectType) return;
 
     // time to begin the dragging parts/blob clicks
     var diff;
@@ -204,7 +213,7 @@ $.fn['toggles'] = function(options) {
 
       var active = slide.hasClass('active');
 
-      if (!diff && opts.click && e.type !== 'mouseleave') {
+      if (!diff && itemOpts.click && e.type !== 'mouseleave') {
 
         // theres no diff so nothing has moved. only toggle if its a mouseup
         slide.trigger('toggle', active);
@@ -221,7 +230,7 @@ $.fn['toggles'] = function(options) {
           // go back
           inner.animate({
             marginLeft: 0
-          },opts.animate/2);
+          },itemOpts.animate/2);
         }
       } else {
 
@@ -233,7 +242,7 @@ $.fn['toggles'] = function(options) {
           // go back again
           inner.animate({
             marginLeft: -width + height
-          },opts.animate/2);
+          },itemOpts.animate/2);
         }
       }
 
