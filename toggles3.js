@@ -64,14 +64,14 @@ var Toggles = function(el, opts) {
     'transition': ''
   };
 
-  this.init();
+  this.createEl();
+  this.bindEvents();
 };
 
-Toggles.prototype.init = function() {
-  var toggle = this.el;
+Toggles.prototype.createEl = function() {
 
-  var height = toggle.height();
-  var width = toggle.width();
+  var height = this.el.height();
+  var width = this.el.width();
 
   // if the element doesnt have an explicit height/width in css, set them
   if (!height) toggle.height(height = this.opts['height']);
@@ -81,18 +81,20 @@ Toggles.prototype.init = function() {
     return $('<div class="toggle-' + name +'>');
   };
 
-  // wrapper inside toggle
-  var slide = div('slide');
+  this.els = {
+    // wrapper inside toggle
+    slide: div('slide'),
 
-  // inside slide, this bit moves
-  var inner = div('inner');
+    // inside slide, this bit moves
+    inner: div('inner'),
 
-  // the on/off divs
-  var on = div('on');
-  var off = div('off');
+    // the on/off divs
+    on: div('on'),
+    off: div('off'),
 
-  // the grip toggle blob
-  var blob = div('blob');
+    // the grip to drag the toggle
+    blob: div('blob')
+  };
 
   var halfHeight = height / 2;
   var onOffWidth = width - halfHeight;
@@ -100,7 +102,7 @@ Toggles.prototype.init = function() {
   var isSelect = this.selectType;
 
   // set up the CSS for the individual elements
-  on
+  this.els.on
     .css({
       height: height,
       width: onOffWidth,
@@ -109,7 +111,7 @@ Toggles.prototype.init = function() {
     })
     .html(this.opts['text']['on']);
 
-  off
+  this.els.off
     .css({
       height: height,
       width: onOffWidth,
@@ -120,25 +122,53 @@ Toggles.prototype.init = function() {
     .html(this.opts['text']['off'])
     .addClass('active');
 
-  blob.css({
+  this.els.blob.css({
     height: height,
     width: height,
     marginLeft: -halfHeight
   });
 
-  inner.css({
+  this.els.inner.css({
     width: width * 2 - height,
     marginLeft: (isSelect || this.on) ? 0 : -width + height
   });
 
   if (selectType) {
-    slide.addClass('toggle-select');
-    toggle.css('width', onOffWidth * 2);
-    blob.hide();
+    this.els.slide.addClass('toggle-select');
+    this.el.css('width', onOffWidth * 2);
+    this.els.blob.hide();
   }
 
   // construct the toggle
-  toggle.html(slide.html(inner.append(on,blob,off)));
+  this.els.inner.append(this.els.on, this.els.blob, this.els.off);
+  this.els.slide.html(this.els.inner);
+  this.el.html(this.els.slide);
+};
+
+Toggles.prototype.bindEvents = function() {
+
+  // evt handler for click events
+  var clickHandler = function(e) {
+    // if the target isn't the blob or dragging is disabled, toggle!
+    if (e.target !=  this.els.blob[0] || !opts['drag']) {
+      this.toggle();
+    }
+  }.bind(this);
+
+  // if click is enabled and toggle isn't within the clicker element (stops double binding)
+  if (this.opts['click'] && (!this.opts['clicker'] || !this.opts['clicker'].has(this.el).length)) {
+    this.el.on('click', clickHandler);
+  }
+
+  // setup the clicker element
+  if (opts['clicker']) {
+    opts['clicker'].on('click', clickHandler);
+  }
+
+  // we're done with all the non dragging stuff
+  if (!opts['drag'] || selectType) return;
+
+
 };
 
 $.fn['toggles'] = function(opts) {
