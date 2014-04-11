@@ -3,6 +3,16 @@
 Copyright 2013 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
+
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory);
+  } else {
+    factory(root.jQuery || root.Zepto || root.ender || root.$)
+  }
+})
+(this, function($) {
+
 $.fn['toggles'] = function(options) {
   options = options || {};
 
@@ -278,5 +288,5 @@ $.fn['toggles'] = function(options) {
 
 
   });
-
 };
+});
