@@ -155,8 +155,9 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
     // evt handler for click events
     var clickHandler = function(e) {
+
       // if the target isn't the blob or dragging is disabled, toggle!
-      if (e.target !==  self.els.blob[0] || !self.opts['drag']) {
+      if (e['target'] !==  self.els.blob[0] || !self.opts['drag']) {
         e.stopPropagation();
         self.toggle();
       }
@@ -164,12 +165,12 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
     // if click is enabled and toggle isn't within the clicker element (stops double binding)
     if (self.opts['click'] && (!self.opts['clicker'] || !self.opts['clicker'].has(self.el).length)) {
-      self.el.on('click touchstart', clickHandler);
+      self.el.on('click', clickHandler);
     }
 
     // setup the clicker element
     if (self.opts['clicker']) {
-      self.opts['clicker'].on('click touchstart', clickHandler);
+      self.opts['clicker'].on('click', clickHandler);
     }
 
     // bind up dragging stuff
@@ -185,9 +186,9 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
     // fired on mouseup and mouseleave events
     var upLeave = function(e) {
-      self.el.off('mousemove touchmove');
+      self.el.off('mousemove');
       self.els.slide.off('mouseleave');
-      self.els.blob.off('mouseup touchend');
+      self.els.blob.off('mouseup');
 
       if (!diff && self.opts['click'] && e.type !== 'mouseleave') {
         self.toggle();
@@ -208,18 +209,17 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
     var wh = -self.w + self.h;
 
-    self.els.blob.on('mousedown touchstart', function(e) {
+    self.els.blob.on('mousedown', function(e) {
 
       // reset diff
       diff = 0;
 
-      self.els.blob.off('mouseup touchend');
+      self.els.blob.off('mouseup');
       self.els.slide.off('mouseleave');
-      var cursor = e.changedTouches ? e.changedTouches[0].pageX : e.pageX;
+      var cursor = e.pageX;
 
-      self.el.on('mousemove touchmove', self.els.blob, function(e) {
-        var newCursor = e.changedTouches ? e.changedTouches[0].pageX : e.pageX;
-        diff = newCursor - cursor;
+      self.el.on('mousemove', self.els.blob, function(e) {
+        diff = e.pageX - cursor;
         var marginLeft;
 
 
@@ -242,7 +242,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
         self.els.inner.css('margin-left',marginLeft);
       });
 
-      self.els.blob.on('mouseup touchend', upLeave);
+      self.els.blob.on('mouseup', upLeave);
       self.els.slide.on('mouseleave', upLeave);
     });
   };
