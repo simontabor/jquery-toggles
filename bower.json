@@ -1,0 +1,10 @@
+{
+  "name": "simontabor/jquery-toggles",
+  "version": "3.0.0",
+  "main": "toggles.min.js",
+  "description": "Toggles is a lightweight jQuery plugin that creates easily-styleable toggle buttons.",
+  "license": "MIT",
+  "ignore": [
+    "lib/*"
+  ]
+}
