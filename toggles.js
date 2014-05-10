@@ -9,6 +9,11 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
   var Toggles = root['Toggles'] = function(el, opts) {
     var self = this;
 
+    if (el.data('toggles') && typeof opts === 'boolean') {
+      el.data('toggles').toggle(opts);
+      return;
+    }
+
     // extend default opts with the users options
     opts = self.opts = $.extend({
       // can the toggle be dragged
@@ -242,6 +247,8 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     if (self['active'] === state) return;
 
     var active = self['active'] = !self['active'];
+
+    self.el.data('toggle-active', active);
 
     self.el.trigger('toggle', active);
 
