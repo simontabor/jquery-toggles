@@ -28,4 +28,4 @@ lib/compiler.jar:
 	wget -O- http://dl.google.com/closure-compiler/compiler-latest.tar.gz | tar -xz -C lib compiler.jar
 
 toggles.min.js:
-	java -jar lib/compiler.jar --output_wrapper='(function($$){%output%})(jQuery);' --compilation_level ADVANCED_OPTIMIZATIONS --externs lib/jquery-1.8-extern.js < $< > $@
+	java -jar lib/compiler.jar --compilation_level ADVANCED_OPTIMIZATIONS --externs lib/jquery-1.8-extern.js < $< > $@
