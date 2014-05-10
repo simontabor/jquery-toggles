@@ -14,6 +14,13 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
       return;
     }
 
+    var dataAttr = [ 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
+    var dataOpts = {};
+    for (var i = 0; i < dataAttr.length; i++) {
+      var opt = el.data('toggle-' + dataAttr[i]);
+      if (typeof opt !== 'undefined') dataOpts[dataAttr[i]] = opt;
+    }
+
     // extend default opts with the users options
     opts = self.opts = $.extend({
       // can the toggle be dragged
@@ -41,7 +48,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
       'height': 20,
       // defaults to a compact toggle, other option is 'select' where both options are shown at once
       'type': 'compact'
-    }, opts || {});
+    }, opts || {}, dataOpts);
 
     self.el = el;
 
