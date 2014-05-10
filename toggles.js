@@ -158,7 +158,6 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
       // if the target isn't the blob or dragging is disabled, toggle!
       if (e['target'] !==  self.els.blob[0] || !self.opts['drag']) {
-        e.stopPropagation();
         self.toggle();
       }
     };
