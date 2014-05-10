@@ -259,7 +259,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
     self.el.trigger('toggle', active);
 
-    self.els.off.toggleClass('active', active);
+    self.els.off.toggleClass('active', !active);
     self.els.on.toggleClass('active', active);
     self.checkbox.prop('checked', active);
 
