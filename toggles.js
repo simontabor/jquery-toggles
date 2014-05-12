@@ -256,11 +256,11 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
     self.el.data('toggle-active', active);
 
-    self.el.trigger('toggle', active);
-
     self.els.off.toggleClass('active', !active);
     self.els.on.toggleClass('active', active);
     self.checkbox.prop('checked', active);
+
+    self.el.trigger('toggle', active);
 
     if (self.selectType) return;
 
@@ -278,11 +278,12 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
         new Toggles($(this), opts);
       });
     };
-  }
+  };
+
   if (typeof define === 'function' && define['amd']) {
     define(['jquery'], factory);
   } else {
-    factory(root['jQuery'] || root['Zepto'] || root['ender'] || root['$'])
+    factory(root['jQuery'] || root['Zepto'] || root['ender'] || root['$'] || $);
   }
 
 })(this);
