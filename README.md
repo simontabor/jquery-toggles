@@ -30,7 +30,8 @@ $('.toggle').toggles({
   clicker: null, // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
   width: 50, // width used if not set in css
   height: 20, // height if not set in css
-  type: 'compact' // if this is set to 'select' then the select style toggle will be used
+  type: 'compact', // if this is set to 'select' then the select style toggle will be used
+  event_name: 'toggle' // if the default event collides, change it
 });
 
 

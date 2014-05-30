@@ -22,7 +22,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     }
 
     // extend default opts with the users options
-    opts = self.opts = $.extend({
+    opts = self.opts = jQuery.extend({
       // can the toggle be dragged
       'drag': true,
       // can it be clicked to toggle
@@ -38,6 +38,8 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
       'animate': 250,
        // animation transition,
       'easing': 'swing',
+      // name of toggle event
+      'event_name': 'toggle',
       // the checkbox to toggle (for use in forms)
       'checkbox': null,
       // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
@@ -60,10 +62,10 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.selectType = opts['type'] === 'select';
 
     // ensure these are jquery elements
-    self.checkbox = $(opts['checkbox']);
+    self.checkbox = jQuery(opts['checkbox']);
 
     // leave as undefined if not set
-    if (opts['clicker']) self.clicker = $(opts['clicker']);
+    if (opts['clicker']) self.clicker = jQuery(opts['clicker']);
 
     self.createEl();
     self.bindEvents();
@@ -83,7 +85,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.w = width;
 
     var div = function(name) {
-      return $('<div class="toggle-' + name +'">');
+      return jQuery('<div class="toggle-' + name +'">');
     };
 
     self.els = {
@@ -260,7 +262,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.els.on.toggleClass('active', active);
     self.checkbox.prop('checked', active);
 
-    self.el.trigger('toggle', active);
+    self.el.trigger(self.event_name, active);
 
     if (self.selectType) return;
 
