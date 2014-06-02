@@ -6,15 +6,16 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
 (function(root) {
 
-  var Toggles = root['Toggles'] = function(el, opts) {
+  var Toggles = root['Toggles'] = function(el, opts, $) {
     var self = this;
+    self.$ = $;
 
     if (el.data('toggles') && typeof opts === 'boolean') {
       el.data('toggles').toggle(opts);
       return;
     }
 
-    var dataAttr = [ 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
+    var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
     var dataOpts = {};
     for (var i = 0; i < dataAttr.length; i++) {
       var opt = el.data('toggle-' + dataAttr[i]);
@@ -38,6 +39,8 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
       'animate': 250,
        // animation transition,
       'easing': 'swing',
+      // name of toggle event
+      'event_name': 'toggle',
       // the checkbox to toggle (for use in forms)
       'checkbox': null,
       // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
@@ -83,7 +86,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.w = width;
 
     var div = function(name) {
-      return $('<div class="toggle-' + name +'">');
+      return self.$('<div class="toggle-' + name +'">');
     };
 
     self.els = {
@@ -260,7 +263,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.els.on.toggleClass('active', active);
     self.checkbox.prop('checked', active);
 
-    self.el.trigger('toggle', active);
+    self.el.trigger(self.opts['event_name'], active);
 
     if (self.selectType) return;
 
@@ -275,7 +278,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
   var factory = function($) {
     $.fn['toggles'] = function(opts) {
       return this.each(function() {
-        new Toggles($(this), opts);
+        new Toggles($(this), opts, $);
       });
     };
   };
