@@ -55,7 +55,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.el = el;
 
     // ensure toggle.active is available
-    self['active'] = opts['on'];
+    self['active'] = self.el.data('stateOn') || opts['on'];
 
     el.data('toggles', self);
 
