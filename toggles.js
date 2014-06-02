@@ -15,7 +15,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
       return;
     }
 
-    var dataAttr = [ 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
+    var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
     var dataOpts = {};
     for (var i = 0; i < dataAttr.length; i++) {
       var opt = el.data('toggle-' + dataAttr[i]);
@@ -56,7 +56,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.el = el;
 
     // ensure toggle.active is available
-    self['active'] = self.el.data('stateOn') || opts['on'];
+    self['active'] = opts['on'];
 
     el.data('toggles', self);
 
