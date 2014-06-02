@@ -6,8 +6,9 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
 
 (function(root) {
 
-  var Toggles = root['Toggles'] = function(el, opts) {
+  var Toggles = root['Toggles'] = function(el, opts, $) {
     var self = this;
+    self.$ = $;
 
     if (el.data('toggles') && typeof opts === 'boolean') {
       el.data('toggles').toggle(opts);
@@ -22,7 +23,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     }
 
     // extend default opts with the users options
-    opts = self.opts = jQuery.extend({
+    opts = self.opts = $.extend({
       // can the toggle be dragged
       'drag': true,
       // can it be clicked to toggle
@@ -62,10 +63,10 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.selectType = opts['type'] === 'select';
 
     // ensure these are jquery elements
-    self.checkbox = jQuery(opts['checkbox']);
+    self.checkbox = $(opts['checkbox']);
 
     // leave as undefined if not set
-    if (opts['clicker']) self.clicker = jQuery(opts['clicker']);
+    if (opts['clicker']) self.clicker = $(opts['clicker']);
 
     self.createEl();
     self.bindEvents();
@@ -85,7 +86,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
     self.w = width;
 
     var div = function(name) {
-      return jQuery('<div class="toggle-' + name +'">');
+      return self.$('<div class="toggle-' + name +'">');
     };
 
     self.els = {
@@ -277,7 +278,7 @@ https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggle
   var factory = function($) {
     $.fn['toggles'] = function(opts) {
       return this.each(function() {
-        new Toggles($(this), opts);
+        new Toggles($(this), opts, $);
       });
     };
   };
