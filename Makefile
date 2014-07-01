@@ -3,10 +3,12 @@
 
 build: \
 	setup \
+	clean \
+	toggles.js \
 	toggles.min.js \
 
 clean:
-	rm -f toggles.min.js
+	rm -f toggles.js toggles.min.js
 
 lib:
 	mkdir lib
@@ -26,6 +28,9 @@ lib/jquery-1.8-extern.js:
 
 lib/compiler.jar:
 	wget -O- http://dl.google.com/closure-compiler/compiler-latest.tar.gz | tar -xz -C lib compiler.jar
+
+toggles.js:
+	sed -e "/<<Toggles>>/r js/Toggles.js" -e "/<<Toggles>>/d" js/wrap.js > toggles.js
 
 toggles.min.js:
 	java -jar lib/compiler.jar --compilation_level ADVANCED_OPTIMIZATIONS --externs lib/jquery-1.8-extern.js < $< > $@
