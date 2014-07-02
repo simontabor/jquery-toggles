@@ -1,0 +1,30 @@
+.toggle-dark {
+  .toggle-slide {
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #242529, 0 1px 0 1px #666;
+  }
+
+  .toggle-on, .toggle-off, .toggle-blob {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 11px;
+  }
+
+  .toggle-on, .toggle-select .toggle-inner .active {
+    background: linear-gradient(top, #1A70BE 0%, #31A2E1 100%);
+  }
+
+  .toggle-off, .toggle-select .toggle-on {
+    background: linear-gradient(top, #242529 0%, #34363B 100%);
+  }
+
+  .toggle-blob {
+    border-radius: 4px;
+    background: linear-gradient(top, #CFCFCF 0%, whiteSmoke 100%);
+    box-shadow: inset 0 0 0 1px #888, inset 0 0 0 2px white;
+
+    &:hover {
+      background: linear-gradient(top, #c0c0c0 0%, #dadada 100%);
+      box-shadow: inset 0 0 0 1px #888,inset 0 0 0 2px #ddd;
+    }
+  }
+}

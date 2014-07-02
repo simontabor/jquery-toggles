@@ -1,0 +1,40 @@
+.toggle-modern {
+  .toggle-slide {
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(#c0c5c9, #a1a9af);
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .toggle-on, .toggle-off {
+    transition: all 0.1s ease-out;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+    font-size: 11px;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .toggle-select {
+    .toggle-off, .toggle-on {
+      background: none;
+    }
+  }
+
+  .toggle-off, .toggle-off.active {
+    background: linear-gradient(#737e8d, #3f454e);
+  }
+
+  .toggle-on, .toggle-on.active {
+    background: linear-gradient(#4894cd, #2852a6);
+  }
+
+  .toggle-blob {
+    background: linear-gradient(#c0c6c9, #81898f);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0,0,0,0.2);
+    border-radius: 3px;
+
+    &:hover {
+      background-image: linear-gradient(#a1a9af, #a1a9af);
+    }
+  }
+}
