@@ -78,7 +78,7 @@ console.log($('.toggles').data('toggle-active')); // true
 
 ### Using data-toggle-\* attributes on the element
 
-Any of the following options can be set using data-toggle attributes: `drag`, `click`, `width`, `height`, `animate`, `easing`, `type`
+Any of the following options can be set using data-toggle attributes: `on`, `drag`, `click`, `width`, `height`, `animate`, `easing`, `type`
 ```html
 <div class="toggles" data-toggle-on="true" data-toggle-height="20" data-toggle-width="60"></div>
 ```

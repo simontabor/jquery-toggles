@@ -1,12 +1,12 @@
 var Toggles = root['Toggles'] = function(el, opts) {
   var self = this;
 
-  if (el.data('toggles') && typeof opts === 'boolean') {
+  if (typeof opts === 'boolean' && el.data('toggles')) {
     el.data('toggles').toggle(opts);
     return;
   }
 
-  var dataAttr = [ 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
+  var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
   var dataOpts = {};
   for (var i = 0; i < dataAttr.length; i++) {
     var opt = el.data('toggle-' + dataAttr[i]);
