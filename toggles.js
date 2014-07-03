@@ -1,5 +1,5 @@
 /**
-@license jQuery Toggles v3.1.1
+@license jQuery Toggles v3.1.2
 Copyright 2014 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
@@ -49,7 +49,9 @@ var Toggles = root['Toggles'] = function(el, opts) {
     // height if not set in css
     'height': 20,
     // defaults to a compact toggle, other option is 'select' where both options are shown at once
-    'type': 'compact'
+    'type': 'compact',
+    // the event name to fire when we toggle
+    'event': 'toggle'
   }, opts || {}, dataOpts);
 
   self.el = el;
@@ -262,7 +264,7 @@ Toggles.prototype.toggle = function(state) {
   self.els.on.toggleClass('active', active);
   self.checkbox.prop('checked', active);
 
-  self.el.trigger('toggle', active);
+  self.el.trigger(self.opts['event'], active);
 
   if (self.selectType) return;
 
