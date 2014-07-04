@@ -198,7 +198,7 @@ Toggles.prototype.bindDrag = function() {
         marginLeft: self['active'] ? 0 : -self.w + self.h
       }, self.opts['animate'] / 2);
     }
-  }.bind(self);
+  };
 
   var wh = -self.w + self.h;
 

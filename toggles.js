@@ -1,5 +1,5 @@
 /**
-@license jQuery Toggles v3.1.2
+@license jQuery Toggles v3.1.3
 Copyright 2014 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
@@ -208,7 +208,7 @@ Toggles.prototype.bindDrag = function() {
         marginLeft: self['active'] ? 0 : -self.w + self.h
       }, self.opts['animate'] / 2);
     }
-  }.bind(self);
+  };
 
   var wh = -self.w + self.h;
 
