@@ -58,19 +58,19 @@ $('.toggles').toggles({
 // the underlying Toggles class can be accessed
 var myToggle = $('.toggles').data('toggles');
 
-console.log(toggle.active); // true
+console.log(myToggle.active); // true
 myToggle.toggle();
-console.log(toggle.active); // false
+console.log(myToggle.active); // false
 
 // set the state to 'false'
 // will not do anything if the state is already false
 myToggle.toggle(false);
-console.log(toggle.active); // false
+console.log(myToggle.active); // false
 
 // passing a boolean in place of options on an active toggle element
 // will set the state
 $('.toggles').toggles(true);
-console.log(toggle.active); // true
+console.log(myToggle.active); // true
 
 // the toggle-active data attribute stores the state too
 console.log($('.toggles').data('toggle-active')); // true
