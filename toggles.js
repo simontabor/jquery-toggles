@@ -1,5 +1,5 @@
 /**
-@license jQuery Toggles v3.1.3
+@license jQuery Toggles v3.1.4
 Copyright 2014 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
@@ -16,7 +16,7 @@ var Toggles = root['Toggles'] = function(el, opts) {
     return;
   }
 
-  var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type' ];
+  var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type', 'checkbox' ];
   var dataOpts = {};
   for (var i = 0; i < dataAttr.length; i++) {
     var opt = el.data('toggle-' + dataAttr[i]);
