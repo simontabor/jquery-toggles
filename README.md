@@ -4,10 +4,52 @@ Want to create easy toggle buttons that you can click, drag, animate, use to tog
 
 Examples can be seen [here](http://simontabor.com/toggles/).
 
+## Usage
 
-## Basic Usage
+### Step 1: Include it in your page
 
-Using jQuery Toggles is easy...
+Include the CSS at the start:
+
+```html
+  <head>
+    <title>My cool page</title>
+  
+    <link rel="stylesheet" href="css/toggles.css">
+    <link rel="stylesheet" href="css/toggles-modern.css">
+    
+    <!-- ALL OF THE THEMES -->
+    <!-- <link rel="stylesheet" href="css/toggles-all.css"> -->
+    
+    <!-- ALL OF THE CSS AND THEMES IN ONE FILE -->
+    <!-- <link rel="stylesheet" href="css/toggles-full.css"> -->
+```
+
+And the JS at the end:
+
+```html
+    <script src="js/toggles.js" type="text/javascript"></script>
+  </body>
+</html>
+```
+
+### Step 2: Create your element
+
+You need to specify the class for the specific theme you want to use.  In this case we are using `toggle-modern`.  The `toggle` class is simply what we will use as our selector to initialize it.
+
+```html
+<div class="toggle toggle-modern">
+```
+
+The other themes we could have used are:
+
+* soft
+* light
+* dark
+* iphone
+
+### Step 3: Initialize!
+
+Now we just need to initialize the element we made to make it toggleable!
 
 ```javascript
 
