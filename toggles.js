@@ -76,8 +76,8 @@ var Toggles = root['Toggles'] = function(el, opts) {
 Toggles.prototype.createEl = function() {
   var self = this;
 
-  var height = self.el.height();
-  var width = self.el.width();
+  var height = null; 
+  var width = null; 
 
   // if the element doesnt have an explicit height/width in css, set them
   if (!height) self.el.height(height = self.opts['height']);
@@ -115,7 +115,7 @@ Toggles.prototype.createEl = function() {
     .css({
       height: height,
       width: onOffWidth,
-      textIndent: isSelect ? '' : -halfHeight,
+      textIndent: isSelect ? '' : halfHeight,
       lineHeight: height + 'px'
     })
     .html(self.opts['text']['on']);
