@@ -116,6 +116,14 @@ console.log(myToggle.active); // true
 
 // the toggle-active data attribute stores the state too
 console.log($('.toggles').data('toggle-active')); // true
+
+// myToggle.toggle(state, noAnimate, noEvent)
+
+// don't animate the change
+myToggle.toggle(false, true);
+
+// change the state without triggering an event
+myToggle.toggle(true, false, true);
 ```
 
 ### Using data-toggle-\* attributes on the element

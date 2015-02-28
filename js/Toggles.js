@@ -46,14 +46,11 @@ var Toggles = root['Toggles'] = function(el, opts) {
 
   self.el = el;
 
-  // ensure toggle.active is available
-  self['active'] = opts['on'];
-
   el.data('toggles', self);
 
   self.selectType = opts['type'] === 'select';
 
-  // ensure these are jquery elements
+  // make checkbox a jquery element
   self.checkbox = $(opts['checkbox']);
 
   // leave as undefined if not set
@@ -61,6 +58,12 @@ var Toggles = root['Toggles'] = function(el, opts) {
 
   self.createEl();
   self.bindEvents();
+
+  // set active to the opposite of what we want, so toggle will run properly
+  self['active'] = !opts['on'];
+
+  // toggle the toggle to the correct state with no animation and no event
+  self.toggle(opts['on'], true, true);
 };
 
 Toggles.prototype.createEl = function() {
@@ -118,8 +121,7 @@ Toggles.prototype.createEl = function() {
       textIndent: isSelect ? '' : halfHeight,
       lineHeight: height + 'px'
     })
-    .html(self.opts['text']['off'])
-    .addClass('active');
+    .html(self.opts['text']['off']);
 
   self.els.blob.css({
     height: height,
@@ -151,7 +153,7 @@ Toggles.prototype.bindEvents = function() {
   var clickHandler = function(e) {
 
     // if the target isn't the blob or dragging is disabled, toggle!
-    if (e['target'] !==  self.els.blob[0] || !self.opts['drag']) {
+    if (e['target'] !== self.els.blob[0] || !self.opts['drag']) {
       self.toggle();
     }
   };
@@ -240,7 +242,7 @@ Toggles.prototype.bindDrag = function() {
   });
 };
 
-Toggles.prototype.toggle = function(state) {
+Toggles.prototype.toggle = function(state, noAnimate, noEvent) {
   var self = this;
 
   // check we arent already in the desired state
@@ -254,7 +256,7 @@ Toggles.prototype.toggle = function(state) {
   self.els.on.toggleClass('active', active);
   self.checkbox.prop('checked', active);
 
-  self.el.trigger(self.opts['event'], active);
+  if (!noEvent) self.el.trigger(self.opts['event'], active);
 
   if (self.selectType) return;
 
@@ -263,5 +265,5 @@ Toggles.prototype.toggle = function(state) {
   // move the toggle!
   self.els.inner.stop().animate({
     'marginLeft': margin
-  }, self.opts['animate']);
+  }, noAnimate ? 0 : self.opts['animate']);
 };
