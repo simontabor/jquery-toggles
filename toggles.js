@@ -154,6 +154,9 @@ Toggles.prototype.createEl = function() {
   self.els.inner.append(self.els.on, self.els.blob, self.els.off);
   self.els.slide.html(self.els.inner);
   self.el.html(self.els.slide);
+  
+  // Make sure the checkbox is checked on init or not checked depending on the "on" value
+  self.checkbox.prop('checked', self.active);
 };
 
 Toggles.prototype.bindEvents = function() {
