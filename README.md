@@ -1,5 +1,12 @@
 # jQuery Toggles
 
+[![Dependencies](https://david-dm.org/simontabor/jquery-toggles.svg)](https://david-dm.org/simontabor/jquery-toggles)
+[![Dev Dependencies](https://david-dm.org/simontabor/jquery-toggles/dev-status.svg)](https://david-dm.org/simontabor/jquery-toggles)
+![Bower](https://img.shields.io/bower/v/jquery-toggles.svg)
+[![Join the chat at https://gitter.im/simontabor/jquery-toggles](https://img.shields.io/badge/gitter-join%20chat-blue.svg)](https://gitter.im/simontabor/jquery-toggles)
+
+[![NPM](https://nodei.co/npm/jquery-toggles.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/jquery-toggles)
+
 Want to create easy toggle buttons that you can click, drag, animate, use to toggle checkboxes and more? Yeah.
 
 Examples can be seen [here](http://simontabor.com/toggles/).
