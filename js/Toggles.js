@@ -6,7 +6,7 @@ var Toggles = root['Toggles'] = function(el, opts) {
     return;
   }
 
-  var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type', 'checkbox' ];
+  var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'type', 'checkbox' ];
   var dataOpts = {};
   for (var i = 0; i < dataAttr.length; i++) {
     var opt = el.data('toggle-' + dataAttr[i]);
@@ -28,8 +28,6 @@ var Toggles = root['Toggles'] = function(el, opts) {
     'on': false,
     // animation time (ms)
     'animate': 250,
-     // animation transition,
-    'easing': 'swing',
     // the checkbox to toggle (for use in forms)
     'checkbox': null,
     // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
