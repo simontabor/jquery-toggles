@@ -191,9 +191,9 @@ Toggles.prototype.bindDrag = function() {
 
   // fired on mouseup and mouseleave events
   var upLeave = function(e) {
-    self.el.off('mousemove');
-    self.els.slide.off('mouseleave');
-    self.els.blob.off('mouseup');
+    self.el.off('mousemove touchmove');
+    self.els.slide.off('mouseleave touchend');
+    self.els.blob.off('mouseup touchend');
 
     if (!diff && self.opts['click'] && e.type !== 'mouseleave') {
       self.toggle();
@@ -214,17 +214,24 @@ Toggles.prototype.bindDrag = function() {
 
   var wh = -self.w + self.h;
 
-  self.els.blob.on('mousedown', function(e) {
+  self.els.blob.on('mousedown touchstart', function(e) {
 
     // reset diff
     diff = 0;
 
-    self.els.blob.off('mouseup');
-    self.els.slide.off('mouseleave');
-    var cursor = e.pageX;
+    self.els.blob.off('mouseup touchend');
+    self.els.slide.off('mouseleave touchend');
+    var cursor = e.pageX
+    if (cursor === undefined) {
+        cursor = e.originalEvent.touches[0].pageX;
+    }
 
-    self.el.on('mousemove', self.els.blob, function(e) {
-      diff = e.pageX - cursor;
+    self.el.on('mousemove touchmove', self.els.blob, function (e) {
+        var currentCursor = e.pageX;
+        if (currentCursor === undefined) {
+            currentCursor = e.originalEvent.touches[0].pageX;
+        }
+        diff = currentCursor - cursor;
       var marginLeft;
 
 
@@ -247,8 +254,8 @@ Toggles.prototype.bindDrag = function() {
       self.els.inner.css('margin-left',marginLeft);
     });
 
-    self.els.blob.on('mouseup', upLeave);
-    self.els.slide.on('mouseleave', upLeave);
+    self.els.blob.on('mouseup touchend', upLeave);
+    self.els.slide.on('mouseleave touchend', upLeave);
   });
 };
 
