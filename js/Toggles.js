@@ -28,7 +28,7 @@ var Toggles = root['Toggles'] = function(el, opts) {
     'on': false,
     // animation time (ms)
     'animate': 250,
-     // animation transition,
+    // animation transition easing function,
     'easing': 'swing',
     // the checkbox to toggle (for use in forms)
     'checkbox': null,
@@ -198,7 +198,7 @@ Toggles.prototype.bindDrag = function() {
       // reset to previous state
       self.els.inner.stop().animate({
         marginLeft: self['active'] ? 0 : -self.w + self.h
-      }, self.opts['animate'] / 2);
+      }, self.opts['animate'] / 2, self.opts['easing']);
     }
   };
 
@@ -265,5 +265,5 @@ Toggles.prototype.toggle = function(state, noAnimate, noEvent) {
   // move the toggle!
   self.els.inner.stop().animate({
     'marginLeft': margin
-  }, noAnimate ? 0 : self.opts['animate']);
+  }, noAnimate ? 0 : self.opts['animate'], self.opts['easing']);
 };

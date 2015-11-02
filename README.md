@@ -73,8 +73,8 @@ $('.toggle').toggles({
     off: 'OFF' // and off
   },
   on: true, // is the toggle ON on init
-  animate: 250, // animation time
-  transition: 'swing', // animation transition,
+  animate: 250, // animation time (ms)
+  easing: 'swing', // animation transition easing function
   checkbox: null, // the checkbox to toggle (for use in forms)
   clicker: null, // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
   width: 50, // width used if not set in css
@@ -135,7 +135,7 @@ myToggle.toggle(true, false, true);
 
 ### Using data-toggle-\* attributes on the element
 
-Any of the following options can be set using data-toggle attributes: `on`, `drag`, `click`, `width`, `height`, `animate`, `easing`, `type`
+Any of the following options can be set using data-toggle attributes: `on`, `drag`, `click`, `width`, `height`, `animate`, `easing`, `type`, `checkbox`
 ```html
 <div class="toggles" data-toggle-on="true" data-toggle-height="20" data-toggle-width="60"></div>
 ```
