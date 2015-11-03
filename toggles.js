@@ -118,10 +118,10 @@ Toggles.prototype.createEl = function() {
     blob: div('blob')
   };
 
-  var halfHeight = height / 2;
-  var onOffWidth = width - halfHeight;
-
   var isSelect = self.selectType;
+  
+  var halfHeight = height / 2;
+  var onOffWidth = isSelect ? width/2 : width - halfHeight;
 
   // set up the CSS for the individual elements
   self.els.on
@@ -150,13 +150,13 @@ Toggles.prototype.createEl = function() {
   });
 
   self.els.inner.css({
-    width: width * 2 - height,
+    width: isSelect ? width : width * 2 - height,
     marginLeft: (isSelect || self['active']) ? 0 : -width + height
   });
 
-  if (self.selectType) {
+  if (isSelect) {
     self.els.slide.addClass('toggle-select');
-    self.el.css('width', onOffWidth * 2);
+    self.el.css('width', width);
     self.els.blob.hide();
   }
 
