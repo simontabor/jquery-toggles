@@ -54,10 +54,10 @@ var Toggles = root['Toggles'] = function(el, opts) {
     'checkbox': null,
     // element that can be clicked on to toggle. removes binding from the toggle itself (use nesting)
     'clicker': null,
-    // width used if not set in css
-    'width': 50,
-    // height if not set in css
-    'height': 20,
+    // width (falls back to 50px)
+    'width': 0,
+    // height (falls back to 20px)
+    'height': 0,
     // defaults to a compact toggle, other option is 'select' where both options are shown at once
     'type': 'compact',
     // the event name to fire when we toggle
@@ -89,15 +89,11 @@ var Toggles = root['Toggles'] = function(el, opts) {
 Toggles.prototype.createEl = function() {
   var self = this;
 
-  var height = self.el.height();
-  var width = self.el.width();
+  var height = self.h = self.opts['height'] || self.el.height() || 20;
+  var width = self.w = self.opts['width'] || self.el.width() || 50;
 
-  // if the element doesnt have an explicit height/width in css, set them
-  if (!height) self.el.height(height = self.opts['height']);
-  if (!width) self.el.width(width = self.opts['width']);
-
-  self.h = height;
-  self.w = width;
+  self.el.height(height);
+  self.el.width(width);
 
   var div = function(name) {
     return $('<div class="toggle-' + name + '">');
@@ -122,26 +118,27 @@ Toggles.prototype.createEl = function() {
   var onOffWidth = width - halfHeight;
 
   var isSelect = self.selectType;
+  var text = self.opts['text'];
 
   // set up the CSS for the individual elements
   self.els.on
     .css({
       height: height,
       width: onOffWidth,
-      textIndent: isSelect ? '' : -halfHeight,
+      textIndent: isSelect ? '' : -height / 3,
       lineHeight: height + 'px'
     })
-    .html(self.opts['text']['on']);
+    .html(text['on']);
 
   self.els.off
     .css({
       height: height,
       width: onOffWidth,
       marginLeft: isSelect ? '' : -halfHeight,
-      textIndent: isSelect ? '' : halfHeight,
+      textIndent: isSelect ? '' : height / 3,
       lineHeight: height + 'px'
     })
-    .html(self.opts['text']['off']);
+    .html(text['off']);
 
   self.els.blob.css({
     height: height,
@@ -168,28 +165,30 @@ Toggles.prototype.createEl = function() {
 
 Toggles.prototype.bindEvents = function() {
   var self = this;
+  var o = self.opts;
+  var clicker = o['clicker'];
 
   // evt handler for click events
   var clickHandler = function(e) {
 
     // if the target isn't the blob or dragging is disabled, toggle!
-    if (!self.el.hasClass('disabled') && (e['target'] !== self.els.blob[0] || !self.opts['drag'])) {
+    if (!self.el.hasClass('disabled') && (e['target'] !== self.els.blob[0] || !o['drag'])) {
       self.toggle();
     }
   };
 
   // if click is enabled and toggle isn't within the clicker element (stops double binding)
-  if (self.opts['click'] && (!self.opts['clicker'] || !self.opts['clicker'].has(self.el).length)) {
+  if (o['click'] && (!clicker || !clicker.has(self.el).length)) {
     self.el.on('click', clickHandler);
   }
 
   // setup the clicker element
-  if (self.opts['clicker']) {
-    self.opts['clicker'].on('click', clickHandler);
+  if (clicker) {
+    clicker.on('click', clickHandler);
   }
 
   // bind up dragging stuff
-  if (self.opts['drag'] && !self.selectType) self.bindDrag();
+  if (o['drag'] && !self.selectType) self.bindDrag();
 };
 
 Toggles.prototype.bindDrag = function() {
