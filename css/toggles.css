@@ -6,6 +6,7 @@
       -ms-user-select: none;
           user-select: none;
   direction: ltr;
+  text-align: center;
 }
 div.disabled > .toggle-slide {
   opacity: 0.7;
