@@ -16,7 +16,17 @@ var Toggles = root['Toggles'] = function(el, opts) {
     return;
   }
 
-  var dataAttr = [ 'on', 'drag', 'click', 'width', 'height', 'animate', 'easing', 'type', 'checkbox' ];
+  var dataAttr = [
+    'on',
+    'drag',
+    'click',
+    'width',
+    'height',
+    'animate',
+    'easing',
+    'type',
+    'checkbox'
+  ];
   var dataOpts = {};
   for (var i = 0; i < dataAttr.length; i++) {
     var opt = el.data('toggle-' + dataAttr[i]);
@@ -90,7 +100,7 @@ Toggles.prototype.createEl = function() {
   self.w = width;
 
   var div = function(name) {
-    return $('<div class="toggle-' + name +'">');
+    return $('<div class="toggle-' + name + '">');
   };
 
   self.els = {
@@ -163,7 +173,7 @@ Toggles.prototype.bindEvents = function() {
   var clickHandler = function(e) {
 
     // if the target isn't the blob or dragging is disabled, toggle!
-    if (e['target'] !== self.els.blob[0] || !self.opts['drag']) {
+    if (!self.el.hasClass('disabled') && (e['target'] !== self.els.blob[0] || !self.opts['drag'])) {
       self.toggle();
     }
   };
@@ -216,6 +226,8 @@ Toggles.prototype.bindDrag = function() {
 
   self.els.blob.on('mousedown', function(e) {
 
+    if (self.el.hasClass('disabled')) return;
+
     // reset diff
     diff = 0;
 
@@ -227,24 +239,20 @@ Toggles.prototype.bindDrag = function() {
       diff = e.pageX - cursor;
       var marginLeft;
 
-
       if (self['active']) {
-
         marginLeft = diff;
 
         // keep it within the limits
         if (diff > 0) marginLeft = 0;
         if (diff < wh) marginLeft = wh;
       } else {
-
         marginLeft = diff + wh;
 
         if (diff < 0) marginLeft = wh;
         if (diff > -wh) marginLeft = 0;
-
       }
 
-      self.els.inner.css('margin-left',marginLeft);
+      self.els.inner.css('margin-left', marginLeft);
     });
 
     self.els.blob.on('mouseup', upLeave);

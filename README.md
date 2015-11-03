@@ -142,3 +142,31 @@ Any of the following options can be set using data-toggle attributes: `on`, `dra
 ```javascript
 $('.toggles').toggles();
 ```
+
+### Disabling user interaction
+
+It can be useful to disable the toggle to stop users from changing the state. Set the `disabled` attribute on the toggle element to do this. Alternatively, you could use CSS to set `pointer-events: none`
+
+```js
+// your toggle element
+var toggle = $('.toggle');
+
+// initialise it
+toggle.toggles();
+
+// disable the toggle element (click + drag will no longer work)
+toggle.toggleClass('disabled', true);
+
+// setting the state via JS is NOT disabled, only user input
+// toggle the toggle on
+toggle.toggles(true);
+
+// re-enable the toggle
+toggle.toggleClass('disabled', false);
+```
+
+## Contributing
+
+Make your JavaScript edits to `js/Toggles.js`. Any styling edits should be made to the relevent files in the `less` folder. JS edits must be compatible with Closure Compiler advanced optimisations - if you aren't able to code in this style then I'll happily tweak any pull requests/help out.
+
+To build the files for release, run `make`. Again, if you struggle then I'll be able to build the files for you.
