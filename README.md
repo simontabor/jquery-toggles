@@ -35,6 +35,8 @@ And the JS at the end:
 
 ```html
     <script src="js/toggles.js" type="text/javascript"></script>
+    <!-- MINIFIED JS - recommended for production -->
+    <!-- <script src="js/toggles.min,js" type="text/javascript"></script> -->
   </body>
 </html>
 ```
@@ -47,12 +49,15 @@ You need to specify the class for the specific theme you want to use.  In this c
 <div class="toggle toggle-modern">
 ```
 
-The other themes we could have used are:
+The themes we could have used are:
 
 * soft
 * light
 * dark
 * iphone
+* modern
+
+Of course, you can write your own themes/tweak the styling.
 
 ### Step 3: Initialize!
 
@@ -84,11 +89,11 @@ $('.toggle').toggles({
 
 
 // Getting notified of changes, and the new state:
-$('.toggle').on('toggle', function (e, active) {
+$('.toggle').on('toggle', function(e, active) {
   if (active) {
-    foo();
+    console.log('Toggle is now ON!');
   } else {
-    bar();
+    console.log('Toggle is now OFF!');
   }
 });
 
