@@ -24,7 +24,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^2.1.0",
-    "less": "^1.7.3"
+    "autoprefixer": "^6.0.3",
+    "js-beautify": "^1.5.10",
+    "less": "^2.5.3",
+    "postcss-cli": "^2.3.2"
   }
 }

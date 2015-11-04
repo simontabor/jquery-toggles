@@ -1,7 +1,6 @@
 .toggle-iphone .toggle-slide {
   border-radius: 9999px;
-  -webkit-box-shadow: 0 0 0 1px #999;
-          box-shadow: 0 0 0 1px #999;
+  box-shadow: 0 0 0 1px #999;
 }
 .toggle-iphone .toggle-on,
 .toggle-iphone .toggle-off {
@@ -13,13 +12,11 @@
 .toggle-iphone .toggle-on {
   border-radius: 9999px 0 0 9999px;
   background: #037bda;
-  -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
-          box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 .toggle-iphone .toggle-on:after {
-  background: -webkit-gradient(linear, left top, left bottom, from(#1189f1), to(#3797ef));
-  background: -webkit-linear-gradient(top, #1189f1 0%, #3797ef 100%);
-  background: linear-gradient(to bottom, #1189f1 0%, #3797ef 100%);
+  background: -webkit-linear-gradient(#1189f1, #3797ef);
+  background: linear-gradient(#1189f1, #3797ef);
   height: 50%;
   content: '';
   margin-top: -19%;
@@ -28,17 +25,15 @@
   margin-left: 10%;
 }
 .toggle-iphone .toggle-off {
-  -webkit-box-shadow: inset -2px 2px 5px rgba(0, 0, 0, 0.4);
-          box-shadow: inset -2px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -2px 2px 5px rgba(0, 0, 0, 0.4);
   border-radius: 0 9999px 9999px 0;
   color: #828282;
   background: #ECECEC;
   text-shadow: 0 0 1px white;
 }
 .toggle-iphone .toggle-off:after {
-  background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#fdfdfd));
-  background: -webkit-linear-gradient(top, #fafafa 0%, #fdfdfd 100%);
-  background: linear-gradient(to bottom, #fafafa 0%, #fdfdfd 100%);
+  background: -webkit-linear-gradient(#fafafa, #fdfdfd);
+  background: linear-gradient(#fafafa, #fdfdfd);
   height: 50%;
   content: '';
   margin-top: -19%;
@@ -48,9 +43,7 @@
 }
 .toggle-iphone .toggle-blob {
   border-radius: 50px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#d1d1d1), to(#fafafa));
-  background: -webkit-linear-gradient(top, #d1d1d1 0%, #fafafa 100%);
-  background: linear-gradient(to bottom, #d1d1d1 0%, #fafafa 100%);
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #ffffff, 0 0 3px rgba(0, 0, 0, 0.6);
-          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #ffffff, 0 0 3px rgba(0, 0, 0, 0.6);
+  background: -webkit-linear-gradient(#d1d1d1, #fafafa);
+  background: linear-gradient(#d1d1d1, #fafafa);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6), inset 0 0 0 2px white, 0 0 3px rgba(0, 0, 0, 0.6);
 }

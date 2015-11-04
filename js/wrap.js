@@ -3,7 +3,6 @@
 Copyright 2012 - 2015 Simon Tabor - MIT License
 https://github.com/simontabor/jquery-toggles / http://simontabor.com/labs/toggles
 */
-
 (function(root) {
 
   var factory = function($) {

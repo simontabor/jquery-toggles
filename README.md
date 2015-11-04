@@ -169,4 +169,4 @@ toggle.toggleClass('disabled', false);
 
 Make your JavaScript edits to `js/Toggles.js`. Any styling edits should be made to the relevent files in the `less` folder. JS edits must be compatible with Closure Compiler advanced optimisations - if you aren't able to code in this style then I'll happily tweak any pull requests/help out.
 
-To build the files for release, run `make`. Again, if you struggle then I'll be able to build the files for you.
+To build the files for release, run `make`. Again, if you struggle then I'll be able to build the files for you. (Note: use node v5)
