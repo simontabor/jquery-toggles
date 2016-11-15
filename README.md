@@ -36,7 +36,7 @@ And the JS at the end:
 ```html
     <script src="js/toggles.js" type="text/javascript"></script>
     <!-- MINIFIED JS - recommended for production -->
-    <!-- <script src="js/toggles.min,js" type="text/javascript"></script> -->
+    <!-- <script src="js/toggles.min.js" type="text/javascript"></script> -->
   </body>
 </html>
 ```
